@@ -22,11 +22,9 @@ app.use(cors());
 
 const PORT = process.env.PORT || 9000;
 const conn = await mongoose
-  .connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(process.env.MONGO_URL)
   .then(async () => {
+    console.log("connected to database")
     app.listen(PORT, () => console.log(`Server Port:  ${PORT}`))
   })
-  .catch((error) => console.log(`${error} did not connect`));
+  .catch((error) => console.log(`${error} did not connect`)); 
